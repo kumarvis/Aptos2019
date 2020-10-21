@@ -23,11 +23,11 @@ class ImageClassificationConfig:
 
     ## Hyper_Params
     learning_rate = 0.001
-    batch_size_per_gpu = 1
+    batch_size_per_gpu = 32
     batch_size = batch_size_per_gpu * Number_GPU
     gpu_count = 1
-    optimizer = 'SGD'
-    epochs = 2
+    optimizer = 'ADAM'
+    epochs = 10
     num_splits = 5
     img_dim = 224
     img_channels = 3

@@ -21,8 +21,8 @@ custom_model.compile(
     ])
 
 DATASET_SIZE = data_pipeline_obj.get_num_samples()
-train_steps_per_epoch = math.ceil(DATASET_SIZE/ ConfigObj.batch_size)
-val_steps_per_epoch = math.ceil(DATASET_SIZE/ ConfigObj.batch_size)
+train_steps_per_epoch = math.ceil((DATASET_SIZE * (1 - ConfigObj.Validation_Fraction) / ConfigObj.batch_size))
+val_steps_per_epoch = math.ceil((DATASET_SIZE * ConfigObj.Validation_Fraction) / ConfigObj.batch_size)
 num_epochs = ConfigObj.epochs
 
 # Train Start:

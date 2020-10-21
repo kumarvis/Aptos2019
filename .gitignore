@@ -1,5 +1,7 @@
 #folders
 .idea
 input/aptos2019-blindness-detection
+#files
+nohup.out
 
 

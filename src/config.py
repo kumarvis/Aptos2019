@@ -25,7 +25,7 @@ class ImageClassificationConfig:
     learning_rate = 0.00008
     batch_size_per_gpu = 32
     batch_size = batch_size_per_gpu * Number_GPU
-    optimizer = 'ADAM'
+    optimizer = 'adam'
     epochs = 25
     img_dim = 224
     img_channels = 3

@@ -20,15 +20,12 @@ class ImageClassificationConfig:
     No_System_Threads = 8
     Device = "cuda"
     Number_GPU = 1
-
     ## Hyper_Params
     learning_rate = 0.001
     batch_size_per_gpu = 32
     batch_size = batch_size_per_gpu * Number_GPU
-    gpu_count = 1
     optimizer = 'ADAM'
-    epochs = 10
-    num_splits = 5
+    epochs = 20
     img_dim = 224
     img_channels = 3
 

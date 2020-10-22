@@ -11,7 +11,7 @@ class ImageClassificationCSVDataPipeline:
     def __init__(self):
         self.num_samples = 0
         self.number_parallel_calls = 1 #tf.data.experimental.AUTOTUNE
-        self.batch_size = (ConfigObj.batch_size_per_gpu * ConfigObj.gpu_count)
+        self.batch_size = (ConfigObj.batch_size_per_gpu * ConfigObj.Number_GPU)
 
     def get_num_samples(self):
         if self.num_samples == 0:

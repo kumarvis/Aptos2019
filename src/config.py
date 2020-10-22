@@ -22,7 +22,7 @@ class ImageClassificationConfig:
     Number_GPU = 1
     ## Hyper_Params
     learning_rate = 0.001
-    batch_size_per_gpu = 32
+    batch_size_per_gpu = 8
     batch_size = batch_size_per_gpu * Number_GPU
     optimizer = 'ADAM'
     epochs = 20

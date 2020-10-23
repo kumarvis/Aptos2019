@@ -31,7 +31,7 @@ history_freeze = custom_model.fit(
     validation_data=valid_ds, validation_steps=val_steps_per_epoch,
     verbose=1)
 
-from plot_keras_hist import plot_hist_data
+from src.plot_keras_hist import plot_hist_data
 plot_hist_data(history_freeze)
 
 print('----> EXPERIMENT FINISHED <----')

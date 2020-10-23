@@ -63,7 +63,7 @@ class LRFinder(object):
             avg_loss = self.beta * avg_loss + (1 - self.beta) * curr_loss
             smoothed_loss = avg_loss / (1 - self.beta ** step_plus)
             # Stop if the loss is exploding after certain number of itrs
-            if step_plus > 50 and smoothed_loss > 4 * best_loss:
+            if step_plus > 70 and smoothed_loss > 4 * best_loss:
                 print('Loss Expload Exit LR finder')
                 break
             # Record the best loss

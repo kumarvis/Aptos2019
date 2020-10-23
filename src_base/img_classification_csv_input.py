@@ -5,7 +5,7 @@ from PIL import Image
 import tensorflow as tf
 import cv2
 
-from .config import ConfigObj
+from config.img_classification_config import ConfigObj
 
 class ImageClassificationCSVDataPipeline:
     def __init__(self):

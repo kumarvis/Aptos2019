@@ -1,10 +1,10 @@
 import os
 import tensorflow as tf
-from src.img_classification_csv_input import ImageClassificationCSVDataPipeline
-from src.config import ConfigObj
-from src.prepare_model import get_custom_model
+from src_base.img_classification_csv_input import ImageClassificationCSVDataPipeline
+from config.img_classification_config import ConfigObj
+from src_base.prepare_model import get_custom_model
 import math
-from optimal_lr_finder_src.LRFinder import LRFinder
+from src_optimal_lr_finder.LRFinder import LRFinder
 
 data_pipeline_obj = ImageClassificationCSVDataPipeline()
 dataset = data_pipeline_obj.get_tf_dataset()

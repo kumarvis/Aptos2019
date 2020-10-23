@@ -2,7 +2,10 @@ import os
 from pathlib import Path
 
 class ImageClassificationConfig:
-    ## Experiment_Params
+    '''
+    ## Experiment Params: These are the experimental params which are
+    usually constant for a Project
+    '''
     Image_Depth = 3
     Project_name = 'Aptos2019'
     Unstructured_Data_Path = ''
@@ -20,15 +23,16 @@ class ImageClassificationConfig:
     No_System_Threads = 8
     Device = "cuda"
     Number_GPU = 1
-    
-    ## Hyper_Params 
+    '''
+    ## Hyper Parameters: These are the standard tuning params 
+    for an experiment.
+    '''
     learning_rate = 0.00008
-    batch_size_per_gpu = 32
+    batch_size_per_gpu = 2
     batch_size = batch_size_per_gpu * Number_GPU
-    optimizer = 'adam'
-    epochs = 25
+    optimizer = 'radam'
+    epochs = 2
     img_dim = 224
     img_channels = 3
-
 
 ConfigObj = ImageClassificationConfig()

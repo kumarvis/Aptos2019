@@ -1,19 +1,20 @@
 import tensorflow as tf
-from src.config import ConfigObj
+from .tf_rectified_adam import RectifiedAdam
+from config.img_classification_config import ConfigObj
 
 def create_optimizer(learning_rate):
     # Setup optimizer
     if ConfigObj.optimizer == "adadelta":
       optimizer = tf.train.AdadeltaOptimizer(
           learning_rate=learning_rate)
-    elif ConfigObj.config.optimizer == "adagrad":
+    elif ConfigObj.optimizer == "adagrad":
       optimizer = tf.train.AdagradOptimizer(
           learning_rate=learning_rate)
     elif ConfigObj.optimizer == "adam":
       optimizer = tf.train.AdamOptimizer(
           learning_rate=learning_rate)
     elif ConfigObj.optimizer == "radam":
-      optimizer = tf.train.AdamOptimizer(
+      optimizer = RectifiedAdam(
           learning_rate=learning_rate)
     elif ConfigObj.optimizer == "ftrl":
       optimizer = tf.train.FtrlOptimizer(

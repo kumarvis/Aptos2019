@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import GlobalAveragePooling2D, Dense
-from .config import ConfigObj
+from config.img_classification_config import ConfigObj
 
 def get_custom_model():
     input_shape = (ConfigObj.img_dim, ConfigObj.img_dim, ConfigObj.img_channels)

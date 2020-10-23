@@ -1,8 +1,8 @@
 import os
 import tensorflow as tf
-from src_base.img_classification_csv_input import ImageClassificationCSVDataPipeline
+from src_train_model.img_classification_csv_input import ImageClassificationCSVDataPipeline
 from config.img_classification_config import ConfigObj
-from src_base.prepare_model import get_custom_model
+from models.create_model import get_custom_model
 import math
 from src_optimal_lr_finder.LRFinder import LRFinder
 
@@ -15,7 +15,7 @@ custom_model = get_custom_model()
 min_lr, max_lr = 0.00001, 0.1
 optimizer = tf.keras.optimizers.Adam()
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy()
-log_file_path = os.path.join(ConfigObj.Path_Parent_Dir, 'optimal_lr_finder_src', 'optimal_lr.log') 
+log_file_path = os.path.join(ConfigObj.Path_Parent_Dir, 'src_optimal_lr_finder', 'optimal_lr.log')
 
 lr_finder = LRFinder(custom_model, optimizer, loss_fn, train_ds)
 lr_finder.range_test(min_lr, max_lr)

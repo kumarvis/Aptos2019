@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src_base.img_classification_csv_input import ImageClassificationCSVDataPipeline
+from src_train_model.img_classification_csv_input import ImageClassificationCSVDataPipeline
 from config.img_classification_config import ConfigObj
 from models.create_model import get_custom_model
 import math
@@ -25,8 +25,8 @@ history_freeze = custom_model.fit(
     verbose=1)
 
 ## Plottings
-from src_base.plot_keras_hist import plot_hist_data
-plot_hist_data(history_freeze)
+from src_train_model.plot_keras_hist import plot_hist_data
+plot_hist_data(history_freeze, prefix='base')
 
 print('----> EXPERIMENT FINISHED <----')
 

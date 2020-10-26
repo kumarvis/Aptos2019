@@ -18,11 +18,14 @@ train_steps_per_epoch = math.ceil((DATASET_SIZE * (1 - ConfigObj.Validation_Frac
 val_steps_per_epoch = math.ceil((DATASET_SIZE * ConfigObj.Validation_Fraction) / ConfigObj.batch_size)
 num_epochs = ConfigObj.epochs
 
+## callbacks
+from callbacks.custom_callbacks import my_callbacks
+
 ## Train Start:
 history_freeze = custom_model.fit(
     train_ds, epochs=num_epochs, steps_per_epoch=train_steps_per_epoch,
     validation_data=valid_ds, validation_steps=val_steps_per_epoch,
-    verbose=1)
+    verbose=1, callbacks=my_callbacks)
 
 ## Plottings
 from src_train_model.plot_keras_hist import plot_hist_data

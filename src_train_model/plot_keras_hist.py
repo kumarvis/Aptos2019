@@ -67,7 +67,7 @@ def plot_hist_data(history, prefix):
     plt.ylabel('accuracy')
     plt.xlabel('epoch')
     plt.legend(['train', 'val'], loc='upper left')
-    model_acc_fig_path = os.path.join(plot_path, prefix + '-' + 'model-loss.png')
+    model_acc_fig_path = os.path.join(plot_path, prefix + '-' + 'model-accuracy.png')
     plt.savefig(model_acc_fig_path)
     plt.clf()
 

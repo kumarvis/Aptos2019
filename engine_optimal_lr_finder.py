@@ -18,8 +18,8 @@ loss_fn = tf.keras.losses.SparseCategoricalCrossentropy()
 log_file_path = os.path.join(ConfigObj.Path_Parent_Dir, 'src_optimal_lr_finder', 'optimal_lr.log')
 
 lr_finder = LRFinder(custom_model, optimizer, loss_fn, train_ds)
-lr_finder.range_test(min_lr, max_lr)
-lr_finder.dump(log_file_path)
+#lr_finder.range_test(min_lr, max_lr)
+#lr_finder.dump(log_file_path)
 lr_finder.plot_smooth_curve(log_file_path)
 
 print('----> EXPERIMENT FINISHED <----')

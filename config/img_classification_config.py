@@ -31,8 +31,8 @@ class ImageClassificationConfig:
     learning_rate = 0.00008
     batch_size_per_gpu = 2
     batch_size = batch_size_per_gpu * Number_GPU
-    optimizer = 'adam'
-    epochs = 2
+    optimizer = 'sgd'
+    epochs = 1
     img_dim = 224
     img_channels = 3
     '''
@@ -41,7 +41,5 @@ class ImageClassificationConfig:
     early_stopping_patience = 5
     model_chkpoint_period = 2
     one_cycle_lr_policy = True
-
-
 
 ConfigObj = ImageClassificationConfig()

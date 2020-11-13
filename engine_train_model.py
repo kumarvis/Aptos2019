@@ -19,7 +19,10 @@ val_steps_per_epoch = math.ceil((DATASET_SIZE * ConfigObj.Validation_Fraction) /
 num_epochs = ConfigObj.epochs
 
 ## callbacks
-from callbacks.custom_callbacks import my_callbacks
+from callbacks.custom_callbacks import MyCallBacks
+
+my_call_backs_obj = MyCallBacks(train_steps_per_epoch)
+my_callbacks = my_call_backs_obj.get_list_callbacks()
 
 ## Train Start:
 history_freeze = custom_model.fit(
@@ -28,8 +31,9 @@ history_freeze = custom_model.fit(
     verbose=1, callbacks=my_callbacks)
 
 ## Plottings
-from src_train_model.plot_keras_hist import plot_hist_data
-plot_hist_data(history_freeze, prefix='base')
+from src_train_model.plot_keras_hist import dump_hist_data, plot_hist_frm_csv
+hist_csv_path = dump_hist_data(history_freeze, prefix='base')
+plot_hist_frm_csv(hist_csv_path, prefix='base')
 
 print('----> EXPERIMENT FINISHED <----')
 

@@ -63,7 +63,7 @@ class LRFinder(object):
             avg_loss = self.beta * avg_loss + (1 - self.beta) * curr_loss
             smoothed_loss = avg_loss / (1 - self.beta ** step_plus)
             # Stop if the loss is exploding after certain number of itrs
-            if step_plus > 70 and smoothed_loss > 4 * best_loss:
+            if step_plus > 10 and smoothed_loss > 4 * best_loss:
                 print('Loss Expload Exit LR finder')
                 break
             # Record the best loss
@@ -98,17 +98,22 @@ class LRFinder(object):
         Lines = file.readlines()
         loss_string = Lines[1].strip().split(',')
         loss_values = [float(vv) for vv in loss_string]
-        loss_grad = np.gradient(loss_values)
+        lst_rate_loss = [(loss_values[i] - loss_values[i+1]) for i in range(len(loss_values) - 1)]
+        lst_rate_loss.insert(0, 0)
+        loss_grad = lst_rate_loss # np.gradient(loss_values)
         lst_lr_string = Lines[3].strip().split(',')
         lst_lr_values = [float(vv) for vv in lst_lr_string]
-        ## skip first 10 values and the last 5,
+        ## skip first k values and the last k,
         ## focus on the interesting parts of the graph
-        plt.plot(lst_lr_values[10:-5], loss_values[10:-5], 'r')
-        plt.plot(lst_lr_values[10:-5], loss_grad[10:-5], 'g')
+        #plt.xticks(lst_lr_values[5:-5])
+        index1, index2 = 5, 10
+        plt.plot(lst_lr_values[index1:-index2], loss_values[index1:-index2], 'r')
+        plt.plot(lst_lr_values[index1:-index2], loss_grad[index1:-index2], 'g')
+
         plt.xlabel("learning-rate")
         plt.ylabel("loss")
         plt.xscale("log")
-        plt.legend(['model-loss', 'grad-loss'], loc='upper left')
+        plt.legend(['model-loss', 'grad-loss'], loc='lower right')
         plt.grid()
         plot_path = os.path.join(str(Path(__file__).parent.absolute()), 'loss_lr_rate.png')
         print(plot_path)

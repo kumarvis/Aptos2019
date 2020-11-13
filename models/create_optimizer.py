@@ -19,8 +19,8 @@ def create_optimizer(learning_rate):
     elif ConfigObj.optimizer == "ftrl":
       optimizer = tf.keras.optimizers.Ftrl(
           learning_rate=learning_rate)
-    elif ConfigObj.optimizer == "momentum":
-      optimizer = tf.keras.optimizers.Momentum(
+    elif ConfigObj.optimizer == "sgd":
+      optimizer = tf.keras.optimizers.SGD(
           learning_rate=learning_rate,
           momentum=0.9,
           name="Momentum")

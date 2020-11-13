@@ -7,8 +7,6 @@ import logging
 import os
 from config.img_classification_config import ConfigObj
 
-#logging.getLogger('tensorflow').setLevel(logging.ERROR)
-
 class CosineAnnealer:
     def __init__(self, start, end, steps):
         self.start = start
@@ -113,7 +111,7 @@ class OneCycleScheduler(Callback):
         one_cycle_csv_path = os.path.join(plot_path, "one_cycle_log.csv")
         one_cycle_df.to_csv(one_cycle_csv_path, index=False)
         print('Exit: on_train_end')
-        OneCycleScheduler.plot_once_cycle_frm_csv(one_cycle_csv_path)
+        #OneCycleScheduler.plot_once_cycle_frm_csv(one_cycle_csv_path)
 
     @staticmethod
     def plot_once_cycle_frm_csv(one_cycle_csv_path):

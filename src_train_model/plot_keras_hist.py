@@ -6,21 +6,6 @@ from pathlib import Path
 from config.img_classification_config import ConfigObj
 import pandas as pd
 
-def dumphist2csv(history, prefix):
-    plot_path = os.path.join(ConfigObj.Path_Parent_Dir, 'src_train_model', 'plots_logs')
-
-    hist_lbls = ['train_acc', 'val_acc', 'loss', 'val_loss']
-    train_accuracy = history.history['acc']
-    valid_accuracy = history.history['val_acc']
-    train_loss = history.history['loss']
-    valid_loss = history.history['val_loss']
-
-    hist_dict = {'train_acc': train_accuracy, 'val_acc': valid_accuracy,
-                                'train_loss': train_loss, 'val_loss': valid_loss}
-    hist_df = pd.DataFrame(hist_dict)
-    hist_csv_path = os.path.join(plot_path, prefix + "_" + "hist_log.csv")
-    hist_df.to_csv(hist_csv_path, index=False)
-
 def dump_hist_data(history, prefix):
     plot_path = os.path.join(ConfigObj.Path_Parent_Dir, 'src_train_model', 'plots_logs')
     hist_lbls = ['train_acc', 'val_acc', 'loss', 'val_loss']
@@ -64,9 +49,6 @@ def plot_hist_frm_csv(hist_csv_path, prefix):
     model_loss_fig_path = os.path.join(plot_path, prefix + '-' + 'model-loss.png')
     plt.savefig(model_loss_fig_path)
     print('Exit: plot_hist_frm_csv')
-
-
-
 
 ##test api
 ##plot_hist_frm_csv('plots_logs/base_hist_log.csv', 'TRY')

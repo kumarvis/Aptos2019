@@ -22,13 +22,13 @@ num_epochs = ConfigObj.epochs
 from callbacks.custom_callbacks import MyCallBacks
 
 my_call_backs_obj = MyCallBacks(train_steps_per_epoch)
-my_callbacks = my_call_backs_obj.get_list_callbacks()
+lst_my_callbacks = my_call_backs_obj.get_list_callbacks()
 
 ## Train Start:
 history_freeze = custom_model.fit(
     train_ds, epochs=num_epochs, steps_per_epoch=train_steps_per_epoch,
     validation_data=valid_ds, validation_steps=val_steps_per_epoch,
-    verbose=1, callbacks=my_callbacks)
+    verbose=1, callbacks=lst_my_callbacks)
 
 ## Plottings
 from src_train_model.plot_keras_hist import dump_hist_data, plot_hist_frm_csv

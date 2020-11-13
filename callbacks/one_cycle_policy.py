@@ -30,7 +30,11 @@ class OneCycleScheduler(Callback):
     In phase 1 the LR increases from `lr_max / div_factor` to `lr_max` and momentum decreases from `mom_max` to `mom_min`.
     In the second phase the LR decreases from `lr_max` to `lr_max / (div_factor * 1e4)` and momemtum from `mom_max` to `mom_min`.
     By default the phases are not of equal length, with the phase 1 percentage controlled by the parameter `phase_1_pct`.
+
+    Reference: https://github.com/kumarvis/My-TechNotes/blob/master/Notes4-MLDL/Understanding-Research-Papers/
+    VisionPapers/SuperConvergence-1CyclePolicy.md
     Reference: https://www.avanwyk.com/tensorflow-2-super-convergence-with-the-1cycle-policy/
+
     """
 
     def __init__(self, lr_max, steps, mom_min=0.85, mom_max=0.95, phase_1_pct=0.3, div_factor=25.):
